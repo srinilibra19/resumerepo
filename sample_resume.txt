@@ -1,0 +1,98 @@
+JOHN DOE
+Senior Software Engineer
+
+CONTACT INFORMATION
+Email: john.doe@email.com
+Phone: (555) 123-4567
+LinkedIn: linkedin.com/in/johndoe
+Location: San Francisco, CA
+GitHub: github.com/johndoe
+
+PROFESSIONAL SUMMARY
+Experienced software engineer with 5+ years of expertise in full-stack development, 
+specializing in Python, JavaScript, and cloud technologies. Proven track record of 
+delivering scalable web applications and leading cross-functional teams. Strong background 
+in microservices architecture, DevOps practices, and agile development methodologies.
+
+TECHNICAL SKILLS
+Programming Languages: Python, JavaScript, TypeScript, Java, Go, SQL
+Web Technologies: React, Node.js, Vue.js, HTML5, CSS3, REST APIs, GraphQL
+Databases: PostgreSQL, MongoDB, Redis, MySQL, Elasticsearch
+Cloud Platforms: AWS (EC2, S3, Lambda, RDS), Google Cloud Platform, Azure
+DevOps Tools: Docker, Kubernetes, Jenkins, GitLab CI, Terraform
+Development Tools: Git, VS Code, IntelliJ, Postman, JIRA, Confluence
+Testing: Jest, Pytest, Selenium, Unit Testing, Integration Testing
+
+PROFESSIONAL EXPERIENCE
+
+Senior Software Engineer | TechCorp Inc. | March 2021 - Present
+• Led development of microservices architecture serving 1M+ users daily
+• Implemented CI/CD pipelines reducing deployment time by 60% and improving reliability
+• Mentored 4 junior developers and conducted regular code reviews
+• Designed and built real-time notification system handling 100K+ messages per day
+• Optimized database performance resulting in 45% faster query response times
+• Technologies: Python, React, AWS, Docker, Kubernetes, PostgreSQL
+
+Software Engineer | StartupXYZ | June 2019 - February 2021
+• Developed full-stack web applications using React and Node.js for 50K+ users
+• Built RESTful APIs and integrated third-party services (Stripe, SendGrid, Twilio)
+• Optimized database queries improving application performance by 40%
+• Collaborated with product team to define technical requirements and user stories
+• Implemented automated testing suite increasing code coverage to 85%
+• Technologies: JavaScript, TypeScript, PostgreSQL, MongoDB, Redis
+
+Junior Software Developer | WebSolutions LLC | August 2018 - May 2019
+• Created responsive websites and web applications for small business clients
+• Maintained and updated legacy PHP applications and MySQL databases
+• Participated in client meetings and requirement gathering sessions
+• Implemented SEO best practices improving client website rankings by 30%
+• Technologies: PHP, MySQL, HTML, CSS, JavaScript, WordPress
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of California, Berkeley | 2015 - 2019
+GPA: 3.7/4.0
+Relevant Coursework: Data Structures, Algorithms, Database Systems, Software Engineering
+
+CERTIFICATIONS
+• AWS Certified Solutions Architect - Associate (2022)
+• Google Cloud Professional Developer (2021)
+• Certified Scrum Master (CSM) (2020)
+• MongoDB Certified Developer (2019)
+
+NOTABLE PROJECTS
+
+E-commerce Platform (2022)
+• Built scalable online shopping platform handling 10K+ concurrent users
+• Implemented payment processing, inventory management, and order tracking
+• Technologies: Python, Django, React, PostgreSQL, Redis, AWS
+• Result: 99.9% uptime and $2M+ in processed transactions
+
+Task Management Application (2021)
+• Developed productivity application with real-time collaboration features
+• Implemented WebSocket connections for live updates and notifications
+• Technologies: Node.js, React, MongoDB, Socket.io
+• Result: Adopted by 500+ teams for project management
+
+Data Analytics Dashboard (2020)
+• Created interactive dashboard for business intelligence and reporting
+• Integrated multiple data sources and implemented data visualization
+• Technologies: Python, Flask, D3.js, PostgreSQL, Elasticsearch
+• Result: Reduced report generation time from hours to minutes
+
+ACHIEVEMENTS & AWARDS
+• Employee of the Month - TechCorp Inc. (September 2022)
+• Best Innovation Award - StartupXYZ Hackathon (2020)
+• Dean's List - UC Berkeley (2017, 2018)
+• Open Source Contributor - 500+ GitHub contributions
+
+LANGUAGES
+• English (Native)
+• Spanish (Conversational)
+• Mandarin (Basic)
+
+INTERESTS
+• Open source software development
+• Machine learning and AI
+• Rock climbing and hiking
+• Photography and travel

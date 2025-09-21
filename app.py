@@ -80,6 +80,10 @@ if "model_loaded" not in st.session_state:
     st.session_state.model_loaded = False
 if "processing" not in st.session_state:
     st.session_state.processing = False
+if "model_attempted" not in st.session_state:
+    st.session_state.model_attempted = False
+if "model_available" not in st.session_state:
+    st.session_state.model_available = True
 
 def handle_file_upload():
     """Handle file upload and processing with comprehensive error handling and memory optimization"""

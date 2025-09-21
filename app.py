@@ -740,9 +740,8 @@ def main():
         if st.session_state.document:
             # Show chat interface regardless of model status (fallback mode available)
             display_chat_interface()
-        elif not st.session_state.document:
-            # No document uploaded yet
         else:
+            # No document uploaded yet
             st.info("**Getting Started:**")
             st.markdown("1. Upload a resume document in the left panel")
             st.markdown("2. Load the AI model")

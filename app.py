@@ -249,7 +249,12 @@ def display_model_status():
     """Display AI model status and loading with comprehensive error handling"""
     st.markdown("### 🤖 AI Model Status")
     
-    if st.session_state.get("model_loaded", False):
+    # Check if we've attempted to load the model
+    model_attempted = st.session_state.get("model_attempted", False)
+    model_loaded = st.session_state.get("model_loaded", False)
+    model_available = st.session_state.get("model_available", True)
+    
+    if model_loaded and model_available:
         st.success("✅ AI model loaded and ready!")
         
         # Show model test button
@@ -275,33 +280,53 @@ def display_model_status():
                 st.error(f"❌ **Model Test Error**")
                 st.error(f"**Error:** {str(e)}")
                 st.info("💡 **Solution:** The model may still work despite the test failure.")
-    else:
-        st.warning("⏳ AI model not loaded yet")
+    
+    elif model_attempted and not model_available:
+        # Fallback mode is active
+        st.warning("⚠️ **Fallback Mode Active**")
+        st.info("**Status:** Using keyword-based search instead of AI model")
+        st.info("💡 **Note:** You can still ask questions! Responses will use keyword matching.")
         
-        if st.button("🚀 Load AI Model", type="primary"):
-            try:
-                with st.spinner("Loading AI model... This may take a moment."):
-                    success = initialize_model_in_session()
-                    if success:
-                        st.success("✅ Model loaded successfully!")
+        # Option to retry model loading
+        if st.button("🔄 Retry AI Model Loading", help="Try loading the AI model again"):
+            st.session_state.model_attempted = False
+            st.session_state.model_loaded = False
+            st.session_state.model_available = True
+            st.rerun()
+    
+    else:
+        # Model not attempted yet
+        st.info("🤖 **AI Model Ready to Load**")
+        st.markdown("**Options:**")
+        st.markdown("• **Load AI Model:** Better accuracy with semantic understanding")
+        st.markdown("• **Skip and Use Fallback:** Keyword-based search (works offline)")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            if st.button("🚀 Load AI Model", type="primary"):
+                st.session_state.model_attempted = True
+                try:
+                    with st.spinner("Loading AI model... This may take a moment."):
+                        success = initialize_model_in_session()
+                        if success:
+                            st.success("✅ Model loaded successfully!")
+                        else:
+                            st.info("✅ **Fallback mode activated** - You can still use the chat!")
                         st.rerun()
-                    else:
-                        st.error("❌ **Model Loading Failed**")
-                        st.info("💡 **Fallback:** The application will use basic keyword matching for queries.")
-                        st.info("💡 **Solutions:**")
-                        st.info("• Try refreshing the page and loading again")
-                        st.info("• Check your internet connection")
-                        st.info("• The basic functionality will still work")
                         
-            except Exception as e:
-                st.error(f"❌ **Unexpected Model Loading Error**")
-                st.error(f"**Error:** {str(e)}")
-                st.info("💡 **Fallback:** Using basic keyword matching instead.")
-                
-                # Set fallback mode
+                except Exception as e:
+                    st.session_state.model_available = False
+                    st.info("✅ **Fallback mode activated** - You can still use the chat!")
+                    st.rerun()
+        
+        with col2:
+            if st.button("⚡ Use Fallback Mode", help="Skip AI model and use keyword search"):
+                st.session_state.model_attempted = True
                 st.session_state.model_loaded = False
-                import logging
-                logging.error(f"Model loading error: {str(e)}", exc_info=True)
+                st.session_state.model_available = False
+                st.info("✅ **Fallback mode activated** - You can start chatting!")
+                st.rerun()
 
 def display_chat_interface():
     """Display the enhanced chat interface with better UX"""
@@ -335,6 +360,17 @@ def display_chat_interface():
             with st.chat_message("assistant"):
                 st.markdown("👋 **Welcome! I'm your Resume Assistant.**")
                 st.markdown("I've analyzed the uploaded resume and I'm ready to answer your questions!")
+                
+                # Show current mode status
+                model_loaded = st.session_state.get("model_loaded", False)
+                model_available = st.session_state.get("model_available", True)
+                
+                if model_loaded and model_available:
+                    st.success("🤖 **AI Mode Active:** Using advanced semantic understanding")
+                elif st.session_state.get("model_attempted", False):
+                    st.info("⚡ **Fallback Mode Active:** Using keyword-based search")
+                else:
+                    st.info("🔧 **Ready to Start:** Load AI model or use fallback mode in the left panel")
                 
                 # Show categorized example questions
                 st.markdown("### 🎯 **Popular Questions to Get Started:**")
@@ -701,11 +737,11 @@ def main():
     with col2:
         st.header("💬 Chat with Resume")
         
-        if st.session_state.document and st.session_state.get("model_loaded", False):
+        if st.session_state.document:
+            # Show chat interface regardless of model status (fallback mode available)
             display_chat_interface()
-        elif st.session_state.document and not st.session_state.get("model_loaded", False):
-            st.warning("⚠️ **Next Step:** Please load the AI model to start chatting.")
-            st.info("Click the '🚀 Load AI Model' button in the left panel.")
+        elif not st.session_state.document:
+            # No document uploaded yet
         else:
             st.info("**Getting Started:**")
             st.markdown("1. Upload a resume document in the left panel")
